@@ -30,28 +30,4 @@ function boutiqueFashion(name) {
   var products=[product1,product2,product3,product4,product5,product6,product7,product8]
 
   
-  // // $("#shop").append(
-  // //   "<div>" +
-  // //     "<h2>" +
-  // //     book0.name +
-  // //     "</h2>" +
-  // //     "<h2>" +
-  // //     book.category +
-  // //     "</h2>" +
-  // //     '<img src="' +
-  // //     book.images[0] +
-  // //     '"/>' +
-  // //     "</div>"
-  // // );
-  // // var $container = $(<div></div>)
-  // // var $title = $(<h2>${book.name}</h2>)
-  // // $container.append($title)
-  // // $title.attr('id', '1')
- // $("#shop").append(
-  //<div>
-   ////<h2>${el.name}</h2>
-   //<h2>${el.category}</h2>
-   //<img id =${book0.id}  src=${book0.image} alt="book" width="200" height="300">
- // </div>
-  
   

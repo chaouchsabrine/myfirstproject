@@ -1,77 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ecommerce Website - Shopping Online</title>
-<link rel="stylesheet" href="index2.css">
-<link rel="stylesheet" href="index.css">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="index2.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
+
 <body>
     <div class="container">
-    <header class="navbar">
-        <div class="logo">
-            <img src="./imagess/logo.png"  id="logo" width="100px" height="100px">
-        </div>
-        <nav>
-            <!-- <ul>
+        <header class="navbar">
+            <div class="logo">
+                <img src="./imagess/logo.png" id="logo" width="100px" height="100px">
+            </div>
+            <nav>
+                <!-- <ul>
 
                 <li><a href="">Acceuil</a> </li>
                 <li><a href="">Products</a></li>
                 <li><a href="">Contact</a></li>
                
             </ul> -->
-            <img src="./imagess/ajouter-au-panier.png" alt="cart icon" width="60px">
-        </nav>
+                <img src="./imagess/ajouter-au-panier.png" alt="cart icon" width="60px">
+            </nav>
 
-    </header>
-    <div class="row">
-        <div class="col-2">
-            <h1>vous n'avez pas le temps d'organiser votre vide dressing</h1>
-            <p>Boutique Fashion s'occupe de tout</p>
-           
+        </header>
+        <div class="row">
+            <div class="col-2">
+                <h1>vous n'avez pas le temps d'organiser votre vide dressing</h1>
+                <p>Boutique Fashion s'occupe de tout</p>
+
             </div>
 
         </div>
     </div>
-</div>
-<script>
-    function boutiqueFashion(name) {
-  return {
-      name:name,
-      list: [],
-    //   Maker: Maker,
-      displayItems: displayItems,
-  };
+    </div>
+    <div class="search-container">
+
+        <p class="all-products">All Products</p>
+        
+        <input type="text" placeholder="Search.." id="search2">
+        <button id="submit">search</button>
+    </div>
+</body>
+    <div class="mydiv"></div>
+
+    <script>
+        function each(array, func) {
+  for (var i = 0; i < array.length; i++) {
+    func(array[i], i)
+  }
 }
-  function makeproduct(price, name, category, image) {
-    return {
-      price: price,
-      name: name,
-      category: category,
-      image: image,
-      
-      
-    };}
-  var product1 = makeproduct(100, "shirt", "femme","./imagess/imag1.png  ")
-  var product2 = makeproduct(200, "kimino hijab", "femme", "./imagess/imag2.png");
-  var product3 = makeproduct(500, "shirt", "femme", "./imagess/imag3.png");
-  var product4 = makeproduct(50, "tracksuits", "femme", "./imagess/imag4.png");
-  var product5 = makeproduct(300, "jacket", "homme", "./imagess/imag5.png");
-  var product6 = makeproduct(80, "racksuits", "homme", "./imagess/imag7.png");
-  var product7 = makeproduct(30, "t-shirt", "homme", "./imagess/imag8.png");
-  var product8 = makeproduct(50, "t-shirt", "homme", "./imagess/imag9.png");
-  var products=[product1,product2,product3,product4,product5,product6,product7,product8]
-var myboutique=boutiqueFashion('boutique')
-myboutique.list=products
-//   }  <span class="post-date">${item.date}</span>
-    function display(item) {
-    console.log(item)
-    // var id = item.id;
-    $(".mydiv").append(`
-        <section class="post container">
-        <div clas   s="post-box SUV CARS">
+
+function filter(array, predicate) {
+  var acc = []
+  each(array, function (element, index) {
+    if (predicate(element, index)) {
+      acc.push(element)
+    }
+  })
+  return acc
+}
+
+        function boutiqueFashion(name) {
+            return {
+                name: name,
+                list: [],
+                //   Maker: Maker,
+                displayItems: displayItems,
+                searchByCategory:searchByCategory,
+                allProducts:allProducts
+
+            };
+        }
+        function makeproduct(price, name, category, image) {
+            return {
+                price: price,
+                name: name,
+                category: category,
+                image: image,
+            };
+        }
+        var product1 = makeproduct(100, "shirt", "femme", "./imagess/imag1.png  ");
+        var product2 = makeproduct(200, "kimino hijab", "femme", "./imagess/imag2.png");
+        var product3 = makeproduct(500, "shirt", "femme", "./imagess/imag3.png");
+        var product4 = makeproduct(50, "tracksuits", "femme", "./imagess/imag4.png");
+        var product5 = makeproduct(300, "jacket", "homme", "./imagess/imag5.png");
+        var product6 = makeproduct(80, "racksuits", "homme", "./imagess/imag7.png");
+        var product7 = makeproduct(30, "t-shirt", "homme", "./imagess/imag8.png");
+        var product8 = makeproduct(50, "t-shirt", "homme", "./imagess/imag9.png");
+        var products = [
+            product1,
+            product2,
+            product3,
+            product4,
+            product5,
+            product6,
+            product7,
+            product8,
+        ];
+        var myboutique = boutiqueFashion("boutique");
+        myboutique.list = products;
+        //   }  <span class="post-date">${item.date}</span>
+        function display(item) {
+            console.log(item);
+            $(".mydiv").append(`
+        <section id="see" class="post container">
+        <div clas   s="clothes">
         <h1>${item.name}</h1>
         <img class = "post-img" src=${item.image} >
         <h2 class="category">${item.category}</h2>
@@ -80,19 +118,39 @@ myboutique.list=products
         <p class="post-description">${item.price}</p>
         <button class = "rent">Addtocart </button>
         </section>
-        `); 
-    }
-function displayItems() {
-    $(".mydiv").empty();
-    for (var i = 0; i < this.list.length; i++) {
-        display(this.list[i]);
-    }
-}
+        `);
+        }
+        
+        function displayItems() {
+            $(".mydiv").empty();
+            for (var i = 0; i < this.list.length; i++) {
+                display(this.list[i]);
+            }
+        }
 
-myboutique.displayItems();
-</script>
-<div class="mydiv"></div>
+        myboutique.displayItems();
+        function searchByCategory(){
+            var query=$("#search2").val()
+        var searchedArray=filter(products,function (element) {
+            
+            return element.category.toLowerCase()===query.toLowerCase()
+        })
+        this.list=searchedArray
+        myboutique.displayItems();
+        }
+        $("#submit").click(function ( ) {
+            myboutique.searchByCategory()
+        })
+        function allProducts() {
+            this.list=products
+        }
+        $(".all-products").click(function () {
+        myboutique.allProducts()
+        myboutique.displayItems()
+        })
+    </script>
     <!-- <script src="index.js"></script> -->
-    
-</body>
+
+   
+
 </html>

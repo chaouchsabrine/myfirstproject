@@ -82,6 +82,6 @@ nav ul li a{
 }
 ul li{
     border-radius: 20px;
-    background-color: black;
-    border-color: black;
+    background-color: rgb(181, 151, 151);
+    border-color: rgb(225, 211, 211);
 }
